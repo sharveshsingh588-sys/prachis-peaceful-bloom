@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Volume2, VolumeX, MessageCircle } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import CountdownScene from "@/components/CountdownScene";
 import OpeningScene from "@/components/OpeningScene";
 import MainMessage from "@/components/MainMessage";
@@ -14,6 +15,7 @@ const Index = () => {
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(
     null
   );
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const birthdayDate = new Date("2025-11-12T00:00:00");
 
@@ -55,6 +57,16 @@ const Index = () => {
     }
   }, [isUnlocked]);
 
+  // Popover timer - shows every 30 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsPopoverOpen(true);
+      setTimeout(() => setIsPopoverOpen(false), 5000); // Hide after 5 seconds
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const toggleMusic = () => {
     if (audioElement) {
       if (isMusicPlaying) {
@@ -85,15 +97,23 @@ const Index = () => {
       </button>
 
       {/* 💬 GeetGPT Chat Icon */}
-      <a
-        href="https://prachi-gita-muse.lovable.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-20 right-6 z-50 p-3 rounded-full bg-primary/80 backdrop-blur-sm text-primary-foreground hover:bg-primary transition-all duration-300 balloon-glow"
-        aria-label="Open GeetGPT"
-      >
-        <MessageCircle className="w-5 h-5" />
-      </a>
+      <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+        <PopoverTrigger asChild>
+          <a
+            href="https://prachi-gita-muse.lovable.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-20 right-6 z-50 p-3 rounded-full bg-primary/80 backdrop-blur-sm text-primary-foreground hover:bg-primary transition-all duration-300 balloon-glow"
+            aria-label="Open GeetGPT"
+          >
+            <MessageCircle className="w-5 h-5" />
+          </a>
+        </PopoverTrigger>
+        <PopoverContent side="left" className="w-auto">
+          <p className="text-sm font-medium">💬 Chat with Krishna</p>
+          <p className="text-xs text-muted-foreground mt-1">Get wisdom from the Bhagavad Gita</p>
+        </PopoverContent>
+      </Popover>
 
       {/* ⏳ Countdown or Birthday Experience */}
       {!isUnlocked ? (
