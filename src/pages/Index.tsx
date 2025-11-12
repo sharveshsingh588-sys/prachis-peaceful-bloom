@@ -66,7 +66,7 @@ const Index = () => {
         {isMusicPlaying ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
       </button>
 
-      {isUnlocked ? (
+      {!isUnlocked ? (
         <CountdownScene targetDate={birthdayDate} />
       ) : (
         <>
