@@ -89,7 +89,7 @@ const Index = () => {
         href="https://prachi-gita-muse.lovable.app/"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-primary/80 backdrop-blur-sm text-primary-foreground hover:bg-primary transition-all duration-300 balloon-glow"
+        className="fixed bottom-20 right-6 z-50 p-3 rounded-full bg-primary/80 backdrop-blur-sm text-primary-foreground hover:bg-primary transition-all duration-300 balloon-glow"
         aria-label="Open GeetGPT"
       >
         <MessageCircle className="w-5 h-5" />
