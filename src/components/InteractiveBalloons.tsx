@@ -85,8 +85,9 @@ const InteractiveBalloons = () => {
                 className="relative cursor-pointer transition-transform hover:scale-110 active:scale-95 animate-float"
                 style={{ animationDelay: `${blessing.id * 0.5}s` }}
               >
-                <div className="w-16 h-20 md:w-20 md:h-24 bg-accent rounded-full balloon-glow">
+                <div className="w-16 h-20 md:w-20 md:h-24 bg-accent balloon-glow" style={{ borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%' }}>
                   <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0.5 h-12 bg-accent/40" />
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1 w-2 h-2 md:w-3 md:h-3 bg-accent" style={{ borderRadius: '0 50% 50% 50%', transform: 'translate(-50%, 0) rotate(45deg)' }} />
                 </div>
               </button>
             ) : (

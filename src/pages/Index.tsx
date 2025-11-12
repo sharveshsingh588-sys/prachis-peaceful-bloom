@@ -32,9 +32,8 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    // Initialize audio element with a peaceful flute track
-    // Using a royalty-free Krishna flute sound
-    const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
+    // Initialize audio element with peaceful birthday music
+    const audio = new Audio('https://cdn.pixabay.com/audio/2022/02/15/audio_4e1ce5e5db.mp3');
     audio.loop = true;
     audio.volume = 0.3;
     setAudioElement(audio);

@@ -34,8 +34,9 @@ const OpeningScene = () => {
       <div className="text-center z-10 px-6 max-w-lg">
         {!balloonPopped ? (
           <div className="animate-balloon-rise">
-            <div className="w-24 h-32 mx-auto bg-accent rounded-full balloon-glow relative animate-float">
+            <div className="w-24 h-32 mx-auto bg-accent balloon-glow relative animate-float" style={{ borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%' }}>
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-20 bg-accent/40" />
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1 w-3 h-3 bg-accent" style={{ borderRadius: '0 50% 50% 50%', transform: 'translate(-50%, 0) rotate(45deg)' }} />
             </div>
           </div>
         ) : (
