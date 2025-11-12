@@ -10,24 +10,24 @@ All colors MUST be HSL.
   :root {
     /* Peaceful color palette - cream, sky blue, soft gold, red balloon */
     --background: 40 100% 97%;
-    --foreground: 30 15% 25%;
+    --foreground: 25 35% 30%;
 
     --card: 40 100% 98%;
-    --card-foreground: 30 15% 25%;
+    --card-foreground: 25 35% 30%;
 
     --popover: 40 100% 98%;
-    --popover-foreground: 30 15% 25%;
+    --popover-foreground: 25 35% 30%;
 
-    --primary: 45 100% 70%;
-    --primary-foreground: 30 15% 25%;
+    --primary: 25 75% 45%;
+    --primary-foreground: 40 100% 97%;
 
     --secondary: 200 70% 85%;
-    --secondary-foreground: 30 15% 25%;
+    --secondary-foreground: 25 35% 30%;
 
     --muted: 40 60% 92%;
-    --muted-foreground: 30 10% 50%;
+    --muted-foreground: 30 15% 35%;
 
-    --accent: 0 65% 68%;
+    --accent: 0 70% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
