@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Volume2, VolumeX } from "lucide-react";
+import { Volume2, VolumeX, MessageCircle } from "lucide-react";
 import CountdownScene from "@/components/CountdownScene";
 import OpeningScene from "@/components/OpeningScene";
 import MainMessage from "@/components/MainMessage";
@@ -83,6 +83,17 @@ const Index = () => {
           <VolumeX className="w-5 h-5" />
         )}
       </button>
+
+      {/* 💬 GeetGPT Chat Icon */}
+      <a
+        href="https://prachi-gita-muse.lovable.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-primary/80 backdrop-blur-sm text-primary-foreground hover:bg-primary transition-all duration-300 balloon-glow"
+        aria-label="Open GeetGPT"
+      >
+        <MessageCircle className="w-5 h-5" />
+      </a>
 
       {/* ⏳ Countdown or Birthday Experience */}
       {!isUnlocked ? (
