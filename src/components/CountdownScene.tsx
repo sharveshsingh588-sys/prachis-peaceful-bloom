@@ -4,6 +4,43 @@ interface CountdownSceneProps {
   targetDate: Date;
 }
 
+const BalloonSVG = ({ color = "#ef4444" }: { color?: string }) => (
+  <svg
+    width="80"
+    height="110"
+    viewBox="0 0 90 130"
+    xmlns="http://www.w3.org/2000/svg"
+    className="drop-shadow-lg"
+  >
+    <defs>
+      <radialGradient id="balloonGradient" cx="30%" cy="30%" r="70%">
+        <stop offset="0%" stopColor="white" stopOpacity="0.6" />
+        <stop offset="100%" stopColor={color} />
+      </radialGradient>
+    </defs>
+
+    {/* Balloon body */}
+    <ellipse
+      cx="45"
+      cy="55"
+      rx="35"
+      ry="50"
+      fill="url(#balloonGradient)"
+      stroke={color}
+      strokeWidth="2"
+    />
+    {/* Neck */}
+    <polygon points="40,100 50,100 45,110" fill={color} />
+    {/* String */}
+    <path
+      d="M45 110 C 40 120, 50 125, 45 135"
+      stroke={color}
+      strokeWidth="2"
+      fill="transparent"
+    />
+  </svg>
+);
+
 const CountdownScene = ({ targetDate }: CountdownSceneProps) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -30,7 +67,6 @@ const CountdownScene = ({ targetDate }: CountdownSceneProps) => {
 
     calculateTimeLeft();
     const timer = setInterval(calculateTimeLeft, 1000);
-
     return () => clearInterval(timer);
   }, [targetDate]);
 
@@ -52,11 +88,9 @@ const CountdownScene = ({ targetDate }: CountdownSceneProps) => {
         ))}
       </div>
 
-      {/* Red Balloon floating */}
+      {/* Floating Red Balloon (SVG version) */}
       <div className="absolute top-1/4 right-1/4 animate-float-slow">
-        <div className="w-16 h-20 bg-accent rounded-full balloon-glow relative">
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0.5 h-16 bg-accent/30" />
-        </div>
+        <BalloonSVG color="#ef4444" />
       </div>
 
       {/* Main Content */}
@@ -74,9 +108,12 @@ const CountdownScene = ({ targetDate }: CountdownSceneProps) => {
         {/* Countdown Timer */}
         <div className="grid grid-cols-4 gap-4 mb-8">
           {Object.entries(timeLeft).map(([unit, value]) => (
-            <div key={unit} className="bg-card/30 backdrop-blur-sm rounded-xl p-4 border border-border/20">
+            <div
+              key={unit}
+              className="bg-card/30 backdrop-blur-sm rounded-xl p-4 border border-border/20"
+            >
               <div className="text-3xl md:text-4xl font-bold text-primary text-glow">
-                {value.toString().padStart(2, '0')}
+                {value.toString().padStart(2, "0")}
               </div>
               <div className="text-xs md:text-sm text-muted-foreground capitalize mt-1">
                 {unit}

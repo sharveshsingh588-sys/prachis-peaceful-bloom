@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 
-const OpeningScene = () => {
+const OpeningScene = ({ isUnlocked }: { isUnlocked: boolean }) => {
   const [balloonPopped, setBalloonPopped] = useState(false);
 
   useEffect(() => {
-    // Auto-pop balloon after 3 seconds
-    const timer = setTimeout(() => {
+    if (isUnlocked) {
+      // If already unlocked, skip the wait and show message immediately
       setBalloonPopped(true);
-    }, 3000);
+      return;
+    }
 
+    // Otherwise, show balloon first and pop after 3s
+    const timer = setTimeout(() => setBalloonPopped(true), 3000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [isUnlocked]);
 
   return (
     <section className="min-h-screen flex items-center justify-center gradient-peaceful relative overflow-hidden">
